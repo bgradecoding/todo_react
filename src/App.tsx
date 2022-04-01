@@ -1,23 +1,18 @@
 import React from "react";
+import { useRoutes } from "react-router-dom";
+import PublicLayouts from "./layouts/PublicLayouts";
+import LoginPage from "./pages/public/LoginPage";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App: React.FC = () => {
+  const publicRoutes = {
+    path: "/",
+    element: <PublicLayouts />,
+    children: [{ path: "login", element: <LoginPage /> }],
+  };
+
+  const routing = useRoutes([publicRoutes]);
+
+  return <>{routing}</>;
+};
 
 export default App;
