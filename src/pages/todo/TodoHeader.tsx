@@ -1,13 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
+import TodoDateComponent from "./components/TodoDateComponent";
+import TodoCountComponent from "./components/TodoCountComponent";
 
 const TodoHeader: React.FC = () => {
-  const today = new Date("YYYY-MM-DD");
+  const [todoCount, setTodoCount] = useState(0);
+
   return (
-    <div>
-      <h1>{today}</h1>
-      <div className="day">수요일</div>
-      <div className="tasks-left">할 일 2개 남음</div>
-    </div>
+    <>
+      <div className="w-full">
+        <TodoDateComponent />
+      </div>
+      <div className="w-full mx-auto">
+        <TodoCountComponent todoCount={todoCount} />
+      </div>
+    </>
   );
 };
 

@@ -17,9 +17,9 @@ const App: React.FC<Props> = ({ history }) => {
   };
 
   const todoRoutes = {
-    path: "/todo",
+    path: "/",
     element: <AuthLayouts />,
-    children: [{ path: "*", element: <TodoMain /> }],
+    children: [{ path: "/todo", element: <TodoMain /> }],
   };
 
   const routing = useRoutes([publicRoutes, todoRoutes]);

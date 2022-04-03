@@ -1,7 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
+import TodoItem from "./TodoItem";
 
 const TodoList: React.FC = () => {
-  return <div className="flex p-20 overflow-y-auto">todo List</div>;
+  const [todoitems, setTodoitems] = useState([1, 2, 3]);
+
+  return (
+    <div className="w-full mx-auto">
+      {todoitems.map((item) => {
+        <TodoItem>{item}</TodoItem>;
+      })}
+    </div>
+  );
 };
 
 export default TodoList;
