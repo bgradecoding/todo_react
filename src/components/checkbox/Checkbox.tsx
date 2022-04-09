@@ -7,7 +7,7 @@ type Props = {
 const Checkbox: React.FC<Props> = ({ onClick }): JSX.Element => {
   return (
     <>
-      <input type="checkbox" id="checkbox" />
+      <input type="checkbox" id="checkbox" onClick={() => onClick()} />
     </>
   );
 };

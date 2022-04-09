@@ -17,8 +17,7 @@ const LoginPage: React.FC = (): JSX.Element => {
     email: "",
     password: "",
   };
-  const goLogin = (values: LoginForm): void => {
-    console.log(values);
+  const goLogin = async (values: LoginForm): Promise<void> => {
     dispatch(actions.user.login(values));
   };
   return (

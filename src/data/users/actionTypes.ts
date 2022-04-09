@@ -1,3 +1,5 @@
 export const RESET_AUTH = "RESET_AUTH";
-export const SET_USER = "SET_USER";
 export const LOGIN_USER = "LOGIN_USER";
+export const SIGNUP_REQUEST = "SIGNUP_REQUEST";
+export const SIGNUP_SUCCESS = "SIGNUP_SUCCESS";
+export const SIGNUP_FAILURE = "SIGNUP_FAILURE";

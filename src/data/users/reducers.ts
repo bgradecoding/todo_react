@@ -14,7 +14,7 @@ const initialState: UserInfo = {
 
 export default function user(state = initialState, action: any) {
   switch (action.type) {
-    case ActionTypes.SET_USER:
+    case ActionTypes.SIGNUP_SUCCESS:
       return action.user;
     case ActionTypes.RESET_AUTH:
       return {};

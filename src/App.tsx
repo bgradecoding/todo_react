@@ -4,7 +4,6 @@ import { useRoutes } from "react-router-dom";
 import PublicLayouts from "./layouts/PublicLayouts";
 import LoginPage from "./pages/public/LoginPage";
 import AuthLayouts from "./layouts/AuthLayouts";
-
 type Props = {
   history: any;
 };
