@@ -1,2 +1,3 @@
 import * as user from "./users/actions";
-export { user };
+import * as common from "./common/actions";
+export { user, common };

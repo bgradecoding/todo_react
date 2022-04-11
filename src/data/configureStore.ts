@@ -11,12 +11,11 @@ declare global {
 
 const history = createBrowserHistory();
 
-const rootReducer = createRootReducer(history);
 export default function configureStore() {
   const store = createStore(
-    rootReducer,
+    createRootReducer(),
     compose(
-      applyMiddleware(thunk),
+      applyMiddleware(thunk.withExtraArgument({ history: history })),
       window.__REDUX_DEVTOOLS_EXTENSION__
         ? window.__REDUX_DEVTOOLS_EXTENSION__()
         : (f: any) => f

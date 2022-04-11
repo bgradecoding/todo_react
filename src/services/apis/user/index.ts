@@ -5,7 +5,6 @@ const api = {
   async login(loginParam: LoginForm) {
     try {
       const res = await socialApiClient.post("/login", loginParam);
-      console.log(res.data);
       return res.data;
     } catch (e: any) {
       throw Error(e.message);

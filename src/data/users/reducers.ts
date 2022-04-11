@@ -13,12 +13,21 @@ const initialState: UserInfo = {
 };
 
 export default function user(state = initialState, action: any) {
+  console.log(action);
   switch (action.type) {
+    case ActionTypes.LOGIN_REQUEST:
+      return action.user;
+    case ActionTypes.LOGIN_SUCCESS:
+      console.log("login success");
+      console.log(state, action);
+      return { ...state, userData: action.payload };
+    case ActionTypes.LOGIN_FAILURE:
+      return action.user;
     case ActionTypes.SIGNUP_SUCCESS:
       return action.user;
     case ActionTypes.RESET_AUTH:
       return {};
-    case ActionTypes.LOGIN_USER:
+    case ActionTypes.SIGNUP_SUCCESS:
       return { ...state, userData: action.payload };
     default:
       return state;

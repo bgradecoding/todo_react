@@ -5,6 +5,7 @@ import { Form, Formik, Field, ErrorMessage } from "formik";
 import PointText from "../../components/text/PointText";
 import * as Yup from "yup";
 import { LoginForm } from "type/user/user";
+import { useNavigate } from "react-router-dom";
 
 const ValidationSchema = Yup.object().shape({
   email: Yup.string().email().required("email은 필수항목입니다."),
@@ -12,13 +13,14 @@ const ValidationSchema = Yup.object().shape({
 });
 
 const LoginPage: React.FC = (): JSX.Element => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const initValue: LoginForm = {
     email: "",
     password: "",
   };
   const goLogin = async (values: LoginForm): Promise<void> => {
-    dispatch(actions.user.login(values));
+    dispatch(actions.user.login(values, navigate));
   };
   return (
     <div className="mt-2 items-center z-10">
