@@ -13,3 +13,11 @@ export type UserInfo = {
     isLogined: boolean;
   };
 };
+
+export type LoginResult = {
+  email: string;
+  password: string;
+  nickname: string;
+  accesToken: string;
+  refreshToken: string;
+};

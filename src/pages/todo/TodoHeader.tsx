@@ -2,8 +2,12 @@ import React, { useState } from "react";
 import TodoDateComponent from "./components/TodoDateComponent";
 import TodoCountComponent from "./components/TodoCountComponent";
 
-const TodoHeader: React.FC = () => {
-  const [todoCount, setTodoCount] = useState(0);
+type Props = {
+  todoCount: number;
+};
+
+const TodoHeader: React.FC<Props> = ({ todoCount }) => {
+  const [todocount, setTodoCount] = useState(todoCount);
 
   return (
     <>
@@ -11,7 +15,7 @@ const TodoHeader: React.FC = () => {
         <TodoDateComponent />
       </div>
       <div className="w-full mx-auto">
-        <TodoCountComponent todoCount={todoCount} />
+        <TodoCountComponent todoCount={todocount} />
       </div>
     </>
   );

@@ -1,6 +1,7 @@
 import * as ActionTypes from "../../data/rootActionType";
 import apis from "../../services/apis/user";
-import { LoginForm } from "type/user/user";
+import { LoginForm, LoginResult } from "type/user/user";
+import * as Util from "../../util/Util";
 
 export const signup = (formData: any) => async (dispatch: any) => {
   dispatch({ type: ActionTypes.SIGNUP_REQUEST });
@@ -21,12 +22,15 @@ export const login =
     try {
       dispatch({ type: ActionTypes.LOADING_START });
 
-      const response = await apis.login(loginParam);
+      const response: LoginResult = await apis.login(loginParam);
 
       dispatch({
         type: ActionTypes.LOGIN_SUCCESS,
         payload: { ...response, isLogined: true },
       });
+
+      //login success 이후 토큰을 localStorage에 저장한다.
+      Util.setLocalStorage("token", response.accesToken);
 
       await dispatch({ type: ActionTypes.LOADING_END });
       await callback("/todo");
