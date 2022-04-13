@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import TodoDateComponent from "./components/TodoDateComponent";
 import TodoCountComponent from "./components/TodoCountComponent";
 
-type Props = {
-  todoCount: number;
-};
+import * as actions from "../../data/rootActions";
+import * as selector from "../../data/rootSelector";
+import { TodoResult } from "type/todo";
+import { useSelector } from "react-redux";
 
-const TodoHeader: React.FC<Props> = ({ todoCount }) => {
-  const [todocount, setTodoCount] = useState(todoCount);
+const TodoHeader: React.FC = () => {
+  const todoListArray: Array<TodoResult> = useSelector(selector.todo.getTodo);
 
   return (
     <>
@@ -15,7 +16,11 @@ const TodoHeader: React.FC<Props> = ({ todoCount }) => {
         <TodoDateComponent />
       </div>
       <div className="w-full mx-auto">
-        <TodoCountComponent todoCount={todocount} />
+        <TodoCountComponent
+          todoCount={
+            todoListArray.filter((todo) => todo.todostatus === "doing").length
+          }
+        />
       </div>
     </>
   );

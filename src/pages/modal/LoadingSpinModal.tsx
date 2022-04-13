@@ -3,7 +3,7 @@ import * as selector from "../../data/rootSelector";
 import "./modal.css";
 import { useSelector } from "react-redux";
 
-const LoadingSpinModal = () => {
+const LoadingSpinModal: React.FC = () => {
   // 열기, 닫기, 모달 헤더 텍스트를 부모로부터 받아옴
   const open: any = useSelector(selector.common.loadingStatus);
 

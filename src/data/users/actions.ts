@@ -2,6 +2,7 @@ import * as ActionTypes from "../../data/rootActionType";
 import apis from "../../services/apis/user";
 import { LoginForm, LoginResult } from "type/user/user";
 import * as Util from "../../util/Util";
+import * as actions from "../rootActions";
 
 export const signup = (formData: any) => async (dispatch: any) => {
   dispatch({ type: ActionTypes.SIGNUP_REQUEST });
@@ -33,6 +34,7 @@ export const login =
       Util.setLocalStorage("token", response.accesToken);
 
       await dispatch({ type: ActionTypes.LOADING_END });
+      await dispatch(actions.todo.getTodo);
       await callback("/todo");
     } catch (error: any) {
       dispatch({ type: ActionTypes.LOADING_END, payload: error });
