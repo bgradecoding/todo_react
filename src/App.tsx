@@ -12,7 +12,7 @@ const App: React.FC<Props> = ({ history }) => {
   const publicRoutes = {
     path: "/",
     element: <PublicLayouts />,
-    children: [{ path: "login", element: <LoginPage /> }],
+    children: [{ path: "/", element: <LoginPage /> }],
   };
 
   const todoRoutes = {
