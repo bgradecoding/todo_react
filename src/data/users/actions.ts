@@ -3,6 +3,7 @@ import apis from "../../services/apis/user";
 import { LoginForm, LoginResult } from "type/user/user";
 import * as Util from "../../util/Util";
 import * as actions from "../rootActions";
+import { setToken } from "../../services/apis/client";
 
 export const signup = (formData: any) => async (dispatch: any) => {
   dispatch({ type: ActionTypes.SIGNUP_REQUEST });
@@ -29,7 +30,7 @@ export const login =
         type: ActionTypes.LOGIN_SUCCESS,
         payload: { ...response, isLogined: true },
       });
-
+      setToken(response.accesToken);
       //login success 이후 토큰을 localStorage에 저장한다.
       Util.setLocalStorage("token", response.accesToken);
 

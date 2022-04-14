@@ -6,7 +6,7 @@ const api = {
   async getTodos() {
     try {
       console.log(authHeader);
-      const res: any = await socialApiClient.get("/todo/todo", authHeader);
+      const res: any = await socialApiClient.get("/todo/todo", authHeader());
       return res.data;
     } catch (e: any) {
       throw Error(e.message);
@@ -18,7 +18,7 @@ const api = {
       const res = await socialApiClient.put(
         "/todo/todo",
         todoParam,
-        authHeader
+        authHeader()
       );
       return res.data;
     } catch (e: any) {
@@ -30,7 +30,7 @@ const api = {
       const res = await socialApiClient.post(
         "/todo/todo",
         { todoname: todoName },
-        authHeader
+        authHeader()
       );
       return res.data;
     } catch (e: any) {
@@ -39,7 +39,10 @@ const api = {
   },
   async deleteTodo(id: number) {
     try {
-      const res = await socialApiClient.delete(`/todo/todo/${id}`, authHeader);
+      const res = await socialApiClient.delete(
+        `/todo/todo/${id}`,
+        authHeader()
+      );
       return res.data;
     } catch (e: any) {
       throw Error(e.message);

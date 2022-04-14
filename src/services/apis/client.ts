@@ -7,12 +7,21 @@ const socialApiClient = axios.create({
   baseURL: SOCIAL_SERVER_URL,
 });
 
-const token: string | null = Util.getLocalStorage("token");
+export let token: string | null = "";
 
-export const authHeader = {
-  headers: {
-    Authorization: "Bearer " + token,
-  },
+export const setToken = (newToken: string) => {
+  token = newToken;
+};
+
+export const authHeader = () => {
+  if (token === "" || token === undefined || token === null) {
+    token = Util.getLocalStorage("token");
+  }
+  return {
+    headers: {
+      Authorization: "Bearer " + token,
+    },
+  };
 };
 
 export { socialApiClient };
